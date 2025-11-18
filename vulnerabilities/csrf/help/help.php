@@ -51,7 +51,6 @@ Host: dvwa.test
 Content-Length: 51
 Content-Type: application/json
 Cookie: PHPSESSID=0hr9ikmo07thlcvjv3u3pkfeni; security=high
-user-token: 026d0caed93471b507ed460ebddbd096
 
 {"password_new":"a","password_conf":"a","Change":1}</span></pre></code>
 
@@ -69,3 +68,4 @@ user-token: 026d0caed93471b507ed460ebddbd096
 
 	<p>Reference: <?php echo dvwaExternalLinkUrlGet( 'https://owasp.org/www-community/attacks/csrf' ); ?></p>
 </div>
+
