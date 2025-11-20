@@ -11,6 +11,7 @@ $page[ 'title' ] = 'Source' . $page[ 'title_separator' ].$page[ 'title' ];
 if (array_key_exists ("id", $_GET)) {
 	$id = $_GET[ 'id' ];
 
+	if (mb_strpos($id, '../') !== false || mb_strpos($id, '..\\') !== false) throw new \Exception('Invalid file path');
 	$lowsrc = @file_get_contents("./{$id}/source/low.php");
 	$lowsrc = str_replace( array( '$html .=' ), array( 'echo' ), $lowsrc);
 	$lowsrc = highlight_string( $lowsrc, true );
@@ -19,10 +20,12 @@ if (array_key_exists ("id", $_GET)) {
 	$medsrc = str_replace( array( '$html .=' ), array( 'echo' ), $medsrc);
 	$medsrc = highlight_string( $medsrc, true );
 
+	if (mb_strpos($id, '../') !== false || mb_strpos($id, '..\\') !== false) throw new \Exception('Invalid file path');
 	$highsrc = @file_get_contents("./{$id}/source/high.php");
 	$highsrc = str_replace( array( '$html .=' ), array( 'echo' ), $highsrc);
 	$highsrc = highlight_string( $highsrc, true );
 
+	if (mb_strpos($id, '../') !== false || mb_strpos($id, '..\\') !== false) throw new \Exception('Invalid file path');
 	$impsrc = @file_get_contents("./{$id}/source/impossible.php");
 	$impsrc = str_replace( array( '$html .=' ), array( 'echo' ), $impsrc);
 	$impsrc = highlight_string( $impsrc, true );
@@ -120,3 +123,4 @@ if (array_key_exists ("id", $_GET)) {
 dvwaSourceHtmlEcho( $page );
 
 ?>
+
